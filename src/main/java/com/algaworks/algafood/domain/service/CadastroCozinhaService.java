@@ -18,21 +18,39 @@ public class CadastroCozinhaService {
     private CozinhaRepository cozinhaRepository;
 
     public Cozinha salvar(Cozinha cozinha) {
-        return cozinhaRepository.salvar(cozinha);
+        return cozinhaRepository.save(cozinha);
     }
 
     public List<Cozinha> listar() {
-        return cozinhaRepository.listar();
+        return cozinhaRepository.findAll();
+    }
+
+    public List<Cozinha> listarPorNome(String nome) {
+        return cozinhaRepository.findTodasByNome(nome);
     }
 
     public Cozinha buscar(Long id) {
-        return cozinhaRepository.buscar(id);
+        return cozinhaRepository.findById(id)
+                .orElseThrow(() -> new EntidadeNaoEncontradaException(String.format("Nenhuma cozinha encontrada com o código [%d]", id)));
+    }
+
+    public Cozinha buscarPorNome(String nome){
+        return cozinhaRepository.findByNome(nome)
+                .orElseThrow(() -> new EntidadeNaoEncontradaException(String.format("Nenhuma cozinha encontrado com o nome [%s]", nome)));
+    }
+
+    public List<Cozinha> buscaTop2PorNome(String nome){
+        return cozinhaRepository.findTop2ByNomeContaining(nome);
+    }
+
+    public boolean existeCozinhaPorNome(String nome){
+        return cozinhaRepository.existsByNome(nome);
     }
 
     public void remover(Long id) {
         try {
-            cozinhaRepository.remover(id);
-        }catch (EmptyResultDataAccessException exception){
+            cozinhaRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException exception) {
             throw new EntidadeNaoEncontradaException(String.format("Nenhuma cozinha encontrada com o código [%d]", id));
         } catch (DataIntegrityViolationException exception) {
             throw new EntidadeEmUsoException(String.format("Cozinha de código [%d] não pode ser removida, pois está em uso.", id));

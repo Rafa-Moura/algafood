@@ -1,5 +1,6 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.service.CadastroRestauranteService;
@@ -12,6 +13,7 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -59,6 +61,48 @@ public class RestauranteController {
         return ResponseEntity.ok(restaurantes);
     }
 
+    @GetMapping(value = "/buscar-por-taxa")
+    public ResponseEntity<List<Restaurante>> listarPorValorDeTaxa(@RequestParam BigDecimal taxaInicial,
+                                                                  @RequestParam BigDecimal taxaFinal) {
+
+        List<Restaurante> restaurantes = cadastroRestauranteService.buscaPorValorDaTaxa(taxaInicial, taxaFinal);
+
+        return ResponseEntity.ok(restaurantes);
+    }
+
+    @GetMapping(value = "/buscar-por-nome-id")
+    public ResponseEntity<List<Restaurante>> listarPorNomeId(@RequestParam String nome,
+                                                                  @RequestParam Long id) {
+
+        List<Restaurante> restaurantes = cadastroRestauranteService.buscarRestaurantePorNomeECozinhaId(nome, id);
+
+        return ResponseEntity.ok(restaurantes);
+    }
+
+    @GetMapping(value = "/buscar-primeiro-por-nome")
+    public ResponseEntity<Restaurante> buscarPrimeiroPorNome(@RequestParam String nome) {
+
+        Restaurante restaurante = cadastroRestauranteService.retornarOPrimeiroEncontradoPorNome(nome);
+
+        return ResponseEntity.ok(restaurante);
+    }
+
+    @GetMapping(value = "/top2-por-nome")
+    public ResponseEntity<List<Restaurante>> top2PorNome(@RequestParam String nome) {
+
+        List<Restaurante> restaurante = cadastroRestauranteService.top2PorNome(nome);
+
+        return ResponseEntity.ok(restaurante);
+    }
+
+    @GetMapping(value = "/total-por-cozinha")
+    public int totalPorCozinha(@RequestParam Long id) {
+
+        int totalRestaurantes = cadastroRestauranteService.totalDeRestaurantePorCozinha(id);
+
+        return totalRestaurantes;
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<Restaurante> buscar(@PathVariable Long id) {
         Restaurante restaurante;
@@ -84,6 +128,20 @@ public class RestauranteController {
 
         return atualizar(id, restauranteAtual);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> remover(@PathVariable Long id) {
+        try {
+            cadastroRestauranteService.remover(id);
+        } catch (EntidadeNaoEncontradaException exception) {
+            return ResponseEntity.notFound().build();
+        } catch (EntidadeEmUsoException exception) {
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+
 
     private static void merge(Map<String, Object> campos, Restaurante restauranteDestino) {
 

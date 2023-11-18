@@ -24,11 +24,33 @@ public class CozinhaController {
         return cozinhaService.listar();
     }
 
+    @GetMapping(value = "/por-nome")
+    public List<Cozinha> listarPorNome(@RequestParam(name = "nome") String nome) {
+        return cozinhaService.listarPorNome(nome);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<Cozinha> buscar(@PathVariable Long id) {
         Cozinha cozinha = cozinhaService.buscar(id);
 
         return ResponseEntity.ok(cozinha);
+    }
+
+    @GetMapping(value = "/busca-por-nome/{nome}")
+    public ResponseEntity<Cozinha> buscarPorNome(@PathVariable String nome) {
+        Cozinha cozinha = cozinhaService.buscarPorNome(nome);
+
+        return ResponseEntity.ok(cozinha);
+    }
+
+    @GetMapping(value = "/top2-por-nome")
+    public List<Cozinha> buscaTop2PorNome(@RequestParam String nome) {
+        return cozinhaService.buscaTop2PorNome(nome);
+    }
+
+    @GetMapping(value = "/exists-por-nome")
+    public boolean existePorNome(String nome) {
+        return cozinhaService.existeCozinhaPorNome(nome);
     }
 
     @PostMapping
