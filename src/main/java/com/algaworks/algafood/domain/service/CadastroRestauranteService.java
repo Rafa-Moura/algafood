@@ -58,7 +58,7 @@ public class CadastroRestauranteService {
     }
 
     public List<Restaurante> buscarRestaurantePorNomeECozinhaId(String nome, Long id) {
-        return restauranteRepository.findByNomeContainingAndCozinhaId(nome, id);
+        return restauranteRepository.consultaPorNome(nome, id);
     }
 
     public Restaurante retornarOPrimeiroEncontradoPorNome(String nome){
