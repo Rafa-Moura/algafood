@@ -70,6 +70,15 @@ public class RestauranteController {
         return ResponseEntity.ok(restaurantes);
     }
 
+    @GetMapping(value = "/buscar-por-taxa-nome")
+    public ResponseEntity<List<Restaurante>> listarPorValorDeTaxaENome(@RequestParam String nome, @RequestParam BigDecimal taxaInicial,
+                                                                  @RequestParam BigDecimal taxaFinal) {
+
+        List<Restaurante> restaurantes = cadastroRestauranteService.buscaPorValorDaTaxaENome(nome, taxaInicial, taxaFinal);
+
+        return ResponseEntity.ok(restaurantes);
+    }
+
     @GetMapping(value = "/buscar-por-nome-id")
     public ResponseEntity<List<Restaurante>> listarPorNomeId(@RequestParam String nome,
                                                                   @RequestParam Long id) {
