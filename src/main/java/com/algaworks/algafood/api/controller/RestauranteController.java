@@ -71,8 +71,9 @@ public class RestauranteController {
     }
 
     @GetMapping(value = "/buscar-por-taxa-nome")
-    public ResponseEntity<List<Restaurante>> listarPorValorDeTaxaENome(@RequestParam String nome, @RequestParam BigDecimal taxaInicial,
-                                                                  @RequestParam BigDecimal taxaFinal) {
+    public ResponseEntity<List<Restaurante>> listarPorValorDeTaxaENome(@RequestParam(required = false) String nome,
+                                                                       @RequestParam(required = false ) BigDecimal taxaInicial,
+                                                                       @RequestParam(required = false) BigDecimal taxaFinal) {
 
         List<Restaurante> restaurantes = cadastroRestauranteService.buscaPorValorDaTaxaENome(nome, taxaInicial, taxaFinal);
 
