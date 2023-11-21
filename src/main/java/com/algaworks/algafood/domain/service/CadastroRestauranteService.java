@@ -5,6 +5,8 @@ import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
+import com.algaworks.algafood.infrastructure.repository.spec.RestauranteComFreteGratisSpecification;
+import com.algaworks.algafood.infrastructure.repository.spec.RestauranteComNomeSemelhanteSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -78,8 +80,8 @@ public class CadastroRestauranteService {
     }
 
     public List<Restaurante> restaurantesComFiltros(String nome){
-        var comFreteGratis = new RestauranteComFreteGratisEspecification();
-        var comNomeSemelhante = new RestauranteComNomeSemelhanteEspecification(nome);
+        var comFreteGratis = new RestauranteComFreteGratisSpecification();
+        var comNomeSemelhante = new RestauranteComNomeSemelhanteSpecification(nome);
 
         return restauranteRepository.findAll(comFreteGratis.and(comNomeSemelhante));
     }

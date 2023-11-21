@@ -113,11 +113,10 @@ public class RestauranteController {
         return totalRestaurantes;
     }
 
-    @GetMapping(value = "/com/frete-gratis")
+    @GetMapping(value = "/com-frete-gratis")
     public List<Restaurante> restaurantesComFreteGratis(String nome){
 
-
-
+        return cadastroRestauranteService.restaurantesComFiltros(nome);
     }
 
     @GetMapping(value = "/{id}")
