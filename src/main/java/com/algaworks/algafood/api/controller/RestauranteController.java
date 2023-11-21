@@ -113,6 +113,13 @@ public class RestauranteController {
         return totalRestaurantes;
     }
 
+    @GetMapping(value = "/com/frete-gratis")
+    public List<Restaurante> restaurantesComFreteGratis(String nome){
+
+
+
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<Restaurante> buscar(@PathVariable Long id) {
         Restaurante restaurante;

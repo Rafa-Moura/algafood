@@ -76,4 +76,11 @@ public class CadastroRestauranteService {
     public int totalDeRestaurantePorCozinha(Long id){
         return restauranteRepository.countByCozinhaId(id);
     }
+
+    public List<Restaurante> restaurantesComFiltros(String nome){
+        var comFreteGratis = new RestauranteComFreteGratisEspecification();
+        var comNomeSemelhante = new RestauranteComNomeSemelhanteEspecification(nome);
+
+        return restauranteRepository.findAll(comFreteGratis.and(comNomeSemelhante));
+    }
 }
