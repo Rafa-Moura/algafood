@@ -5,6 +5,9 @@ insert into cozinha (nome) values ('Brasileira');
 insert into restaurante (nome, taxa_frete, cozinha_id) values('Dona juju doces Indianos', 5.00, 2);
 insert into restaurante (nome, taxa_frete, cozinha_id) values('A delante refeições Tailandesa', 10.00, 1);
 insert into restaurante (nome, taxa_frete, cozinha_id) values('Nosso Sabor', 10.00, 3);
+insert into algafood.restaurante (nome, taxa_frete, cozinha_id) values ('Super lanches', 0.00, 1);
+insert into algafood.restaurante (nome, taxa_frete, cozinha_id) values ('Valdete Doces', 0.00, 1);
+insert into algafood.restaurante (nome, taxa_frete, cozinha_id) values ('Kleber Marmitas', 0.00, 1);
 
 insert into estado (id, nome) values (1, 'Minas Gerais');
 insert into estado (id, nome) values (2, 'São Paulo');
