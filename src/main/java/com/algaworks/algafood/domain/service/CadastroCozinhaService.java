@@ -10,6 +10,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CadastroCozinhaService {
@@ -41,6 +42,10 @@ public class CadastroCozinhaService {
 
     public List<Cozinha> buscaTop2PorNome(String nome){
         return cozinhaRepository.findTop2ByNomeContaining(nome);
+    }
+
+    public Optional<Cozinha> buscarPrimeiro(){
+        return cozinhaRepository.buscarPrimeiro();
     }
 
     public boolean existeCozinhaPorNome(String nome){

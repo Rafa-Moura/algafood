@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/cozinhas")
@@ -51,6 +52,10 @@ public class CozinhaController {
     @GetMapping(value = "/exists-por-nome")
     public boolean existePorNome(String nome) {
         return cozinhaService.existeCozinhaPorNome(nome);
+    }
+    @GetMapping(value = "/buscar-primeiro")
+    public Optional<Cozinha> buscarPrimeiro(String nome) {
+        return cozinhaService.buscarPrimeiro();
     }
 
     @PostMapping

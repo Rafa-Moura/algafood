@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
-
-import static com.algaworks.algafood.infrastructure.repository.spec.RestauranteSpecs.comFreteGratis;
-import static com.algaworks.algafood.infrastructure.repository.spec.RestauranteSpecs.comNomeSemelhante;
+import java.util.Optional;
 
 @Service
 public class CadastroRestauranteService {
@@ -83,5 +81,9 @@ public class CadastroRestauranteService {
     public List<Restaurante> restaurantesComFiltros(String nome){
 
         return restauranteRepository.findComFreteGratis(nome);
+    }
+
+    public Optional<Restaurante> buscarPrimeiro(){
+        return restauranteRepository.buscarPrimeiro();
     }
 }
