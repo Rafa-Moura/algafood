@@ -1,9 +1,11 @@
 package com.algaworks.algafood.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,4 +19,7 @@ public class FormaPagamento {
 
     @Column(nullable = false)
     private String descricao;
+
+    @ManyToMany(mappedBy = "formaPagamentos")
+    private List<Restaurante> restaurantes;
 }
