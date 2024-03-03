@@ -4,9 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -34,10 +37,21 @@ public class Restaurante {
     @JsonIgnore
     private Endereco endereco;
 
+    @CreationTimestamp
+    @Column(name = "data_cadastro", nullable = false)
+    @JsonIgnore
+    private LocalDateTime dataCadastro;
+
+    @UpdateTimestamp
+    @Column(name = "data_atualizacao", nullable = false)
+    @JsonIgnore
+    private LocalDateTime dataAtualizacao;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "restaurante_forma_pagamento",
             joinColumns = @JoinColumn(name = "restaurante_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id", referencedColumnName = "id"))
     private List<FormaPagamento> formaPagamentos;
+
 }

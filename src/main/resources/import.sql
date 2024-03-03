@@ -2,12 +2,12 @@ insert into cozinha (nome) values ('Tailandesa');
 insert into cozinha (nome) values ('Indiana');
 insert into cozinha (nome) values ('Brasileira');
 
-insert into restaurante (nome, taxa_frete, cozinha_id) values('Dona juju doces Indianos', 5.00, 2);
-insert into restaurante (nome, taxa_frete, cozinha_id) values('A delante refeições Tailandesa', 10.00, 1);
-insert into restaurante (nome, taxa_frete, cozinha_id) values('Nosso Sabor', 10.00, 3);
-insert into restaurante (nome, taxa_frete, cozinha_id) values ('Super lanches', 0.00, 1);
-insert into restaurante (nome, taxa_frete, cozinha_id) values ('Valdete Doces', 0.00, 1);
-insert into restaurante (nome, taxa_frete, cozinha_id) values ('Kleber Marmitas', 0.00, 1);
+insert into restaurante (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values('Dona juju doces Indianos', 5.00, 2, UTC_TIMESTAMP, UTC_TIMESTAMP);
+insert into restaurante (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values('A delante refeições Tailandesa', 10.00, 1, UTC_TIMESTAMP, UTC_TIMESTAMP);
+insert into restaurante (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values('Nosso Sabor', 10.00, 3, UTC_TIMESTAMP, UTC_TIMESTAMP);
+insert into restaurante (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Super lanches', 0.00, 1, UTC_TIMESTAMP, UTC_TIMESTAMP);
+insert into restaurante (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Valdete Doces', 0.00, 1, UTC_TIMESTAMP, UTC_TIMESTAMP);
+insert into restaurante (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Kleber Marmitas', 0.00, 1, UTC_TIMESTAMP, UTC_TIMESTAMP);
 
 insert into estado (id, nome) values (1, 'Minas Gerais');
 insert into estado (id, nome) values (2, 'São Paulo');
