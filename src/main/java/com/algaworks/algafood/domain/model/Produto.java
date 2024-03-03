@@ -1,5 +1,6 @@
 package com.algaworks.algafood.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "produto")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,5 +29,6 @@ public class Produto {
 
     @ManyToOne
     @JoinColumn(name = "restaurante_id", referencedColumnName = "id")
+    @JsonIgnore
     private Restaurante restaurante;
 }

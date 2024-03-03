@@ -33,3 +33,7 @@ insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) val
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (4, 3)
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (5, 3)
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (6, 1), (6, 2), (6, 3), (6, 4)
+
+insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('Bolo de cenoura', 'Bolo de cenoura com cobertura de chocolate', 15.18, true, 5);
+insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('Pastel Indiano', 'Pastel indiano feito com muita higiene', 5.00, true, 1);
+insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('Refeição completa PF', 'Almoço prato feito, serve 1 pessoa', 13.00, true, 3);

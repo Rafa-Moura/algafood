@@ -43,7 +43,7 @@ public class RestauranteController {
 
         try {
             Restaurante restauranteAtual = cadastroRestauranteService.buscar(id);
-            BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "formaPagamentos", "endereco", "dataCadastro");
+            BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "formaPagamentos", "endereco", "dataCadastro", "produtos");
 
             cadastroRestauranteService.salvar(restauranteAtual);
 
