@@ -21,5 +21,6 @@ public class FormaPagamento {
     private String descricao;
 
     @ManyToMany(mappedBy = "formaPagamentos")
+    @JsonIgnore
     private List<Restaurante> restaurantes;
 }
