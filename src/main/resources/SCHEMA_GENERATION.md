@@ -20,3 +20,13 @@ CREATE, ALTER e DROP.
 spring.jpa.hibernate.ddl-auto= Essa propriedade dita qual a função do Hibernate em prol da inicialização do sistema.
 Aqui você pode dizer pra ele se ao iniciar a aplicação ele deverá criar os modelos do zero: CREATE, se ele irá
 dropar as tabelas e recriar: create-drop ou apenas tentar atualizar as tabelas que já existem: UPDATE.
+
+
+
+## Migrações e versionamento de banco de dados
+
+Consiste em uma ferramenta ser responsável por gerenciar a execução de scripts no banco de dados baseando-se em versões.
+No curso, será utilizado a ferramenta FLYWAY. Essa ferramenta trabalha analisando os arquivos .sql verificando a versão
+dos arquivos e coordenando suas execuções no sistema de acordo com as versões. Isso garante que um script seja executado
+1 única vez, caso seja necessário alguma alteração ou nova criação, o flyway analisará o arquivo com a nova versão
+e executará.
